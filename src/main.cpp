@@ -127,6 +127,10 @@ void setup() {
 }
 
 void loop() {
+    // cap target temp
+    target_temp = min(target_temp, 995);
+    target_temp = max(target_temp, 150);
+
     // read new temp
     static unsigned long last_millis = millis();
     if (millis() - last_millis >= 250) {  // For the MAX6675 minimum 250ms delay
