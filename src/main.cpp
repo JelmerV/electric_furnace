@@ -70,7 +70,7 @@ void encoderInterrupt() {
     static uint8_t last_state;
     uint8_t state = ((PIND)&ENCODER_PIN_MASK) >> min(PIN_ENCODER_A, PIN_ENCODER_B);
 
-    uint8_t idx = state | (last_state << 2);  // combine 2 states into single int
+    uint8_t idx = (state << 2) | last_state;  // combine 2 states into single int
     target_temp += encoderSteps[idx] * 5;     // add value at index
     last_state = state;                       // last state is current state in the lower two bits.
 }
@@ -143,20 +143,20 @@ void loop() {
     }
 
     // check if door state changed
-    static bool last_door_state;
-    bool door_state = digitalRead(PIN_DOOR_IN);
-    if (door_state != last_door_state) {
-        if (door_state == LOW) {  // door closed: high signal
+    static bool last_door_open;
+    bool door_open = digitalRead(PIN_DOOR_IN);  //pull up, normally closed to ground. pin high -> door open
+    if (door_open != last_door_open) {
+        if (door_open) {
             is_safe = false;
             digitalWrite(PIN_COIL_OUT, LOW);
         } else {
             door_closed_millis = millis();
         }
-        last_door_state = door_state;
+        last_door_open = door_open;
     }
 
     // check is door closed some time ago
-    if (door_state == HIGH) {
+    if (!door_open) {
         if (millis() - door_closed_millis >= 2000) {
             // delay after closing door
             is_safe = true;
