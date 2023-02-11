@@ -13,3 +13,45 @@ This is a platformio project, so you should be able to just open this in vs code
 * Adafruit_GFX (for the graphics)
 * Adafruit_SSD1306 (for the mini oled display)
 * Adafruit max6675 (for reading the thermocouple)
+
+# $projectName
+
+A short description of the project goes here.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Documentation](#documentation)
+- [Troubleshooting](#troubleshooting)
+
+## Introduction
+
+In this section, provide a brief overview of the project, including its purpose and goals.
+
+## Features
+
+List the main features of the project.
+
+## Prerequisites
+
+List any prerequisites that are required for the project, such as software, hardware, libraries, etc.
+
+## Installation
+
+Provide detailed instructions on how to install and set up the project.
+
+## Usage
+
+Describe how to use the project and any relevant usage examples.
+
+## Documentation
+
+Include links to any additional documentation, such as API references or user guides.
+
+## Troubleshooting
+
+Provide tips and guidance on how to troubleshoot common issues that may arise when using the project.
